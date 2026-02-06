@@ -25,11 +25,6 @@
     xhtml: false
   });
 
-  // Use the GFM heading ID extension
-  if (typeof markedGfmHeadingId !== 'undefined') {
-    marked.use(markedGfmHeadingId.gfmHeadingId());
-  }
-
   // Custom renderer for code blocks with Prism
   const renderer = new marked.Renderer();
   const originalCodeRenderer = renderer.code;
