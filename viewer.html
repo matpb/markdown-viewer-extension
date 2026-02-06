@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Viewer</title>
+
+  <!-- Prism.js for syntax highlighting -->
+  <link rel="stylesheet" href="lib/prism.css">
+
+  <!-- GitHub Markdown CSS -->
+  <link rel="stylesheet" href="styles/github-markdown.css">
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="styles/viewer.css">
+</head>
+<body>
+  <div id="toolbar">
+    <span id="filename"></span>
+    <div id="toolbar-actions">
+      <button id="toggle-theme" title="Toggle dark/light theme">🌙</button>
+      <button id="toggle-raw" title="Toggle raw markdown">{ }</button>
+    </div>
+  </div>
+
+  <div id="container">
+    <article id="content" class="markdown-body"></article>
+    <pre id="raw-content" style="display: none;"></pre>
+  </div>
+
+  <!-- Marked.js for markdown parsing -->
+  <script src="lib/marked.min.js"></script>
+
+  <!-- Marked-GFM extension for GitHub Flavored Markdown -->
+  <script src="lib/marked-gfm-heading-id.min.js"></script>
+
+  <!-- Prism.js for syntax highlighting -->
+  <script src="lib/prism.js"></script>
+
+  <!-- Viewer logic -->
+  <script src="viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+/* Viewer-specific styles */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #24292f;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: #f6f8fa;
+  border-bottom: 1px solid #d0d7de;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+#filename {
+  font-weight: 600;
+  font-size: 14px;
+  color: #57606a;
+}
+
+#toolbar-actions {
+  display: flex;
+  gap: 8px;
+}
+
+#toolbar-actions button {
+  padding: 6px 12px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+#toolbar-actions button:hover {
+  background-color: #f3f4f6;
+  border-color: #b1b7c1;
+}
+
+#container {
+  max-width: 1012px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+#content {
+  padding: 32px;
+  background-color: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+#raw-content {
+  padding: 16px;
+  background-color: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Task list styling */
+.task-list-item {
+  list-style-type: none;
+}
+
+.task-list-item-checkbox {
+  margin-right: 0.5em;
+  margin-left: -1.5em;
+}
+
+/* Copy button styling */
+.copy-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+  background-color: #ffffff;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+pre:hover .copy-button {
+  opacity: 1;
+}
+
+.copy-button:hover {
+  background-color: #f3f4f6;
+}
+
+/* Error styling */
+.error {
+  padding: 16px;
+  background-color: #fff8f8;
+  border: 1px solid #ff6b6b;
+  border-radius: 6px;
+  color: #d32f2f;
+}
+
+.error h2 {
+  margin-top: 0;
+  color: #d32f2f;
+}
+
+.error pre {
+  background-color: #ffffff;
+  padding: 12px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+/* Dark theme */
+body.dark-theme {
+  background-color: #0d1117;
+  color: #c9d1d9;
+}
+
+body.dark-theme #toolbar {
+  background-color: #161b22;
+  border-bottom-color: #30363d;
+}
+
+body.dark-theme #filename {
+  color: #8b949e;
+}
+
+body.dark-theme #toolbar-actions button {
+  background-color: #21262d;
+  border-color: #30363d;
+  color: #c9d1d9;
+}
+
+body.dark-theme #toolbar-actions button:hover {
+  background-color: #30363d;
+  border-color: #6e7681;
+}
+
+body.dark-theme #content {
+  background-color: #0d1117;
+  border-color: #30363d;
+}
+
+body.dark-theme #raw-content {
+  background-color: #161b22;
+  border-color: #30363d;
+  color: #c9d1d9;
+}
+
+body.dark-theme .copy-button {
+  background-color: #21262d;
+  border-color: #30363d;
+  color: #c9d1d9;
+}
+
+body.dark-theme .copy-button:hover {
+  background-color: #30363d;
+}
+
+body.dark-theme .error {
+  background-color: #2d0d0d;
+  border-color: #ff6b6b;
+}
+
+body.dark-theme .error pre {
+  background-color: #161b22;
+}
+
+/* GitHub markdown dark theme overrides */
+body.dark-theme .markdown-body {
+  color-scheme: dark;
+  --color-prettylights-syntax-comment: #8b949e;
+  --color-prettylights-syntax-constant: #79c0ff;
+  --color-prettylights-syntax-entity: #d2a8ff;
+  --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+  --color-prettylights-syntax-entity-tag: #7ee787;
+  --color-prettylights-syntax-keyword: #ff7b72;
+  --color-prettylights-syntax-string: #a5d6ff;
+  --color-prettylights-syntax-variable: #ffa657;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+  --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+  --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+  --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+  --color-prettylights-syntax-carriage-return-bg: #b62324;
+  --color-prettylights-syntax-string-regexp: #7ee787;
+  --color-prettylights-syntax-markup-list: #f2cc60;
+  --color-prettylights-syntax-markup-heading: #1f6feb;
+  --color-prettylights-syntax-markup-italic: #c9d1d9;
+  --color-prettylights-syntax-markup-bold: #c9d1d9;
+  --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+  --color-prettylights-syntax-markup-deleted-bg: #67060c;
+  --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+  --color-prettylights-syntax-markup-inserted-bg: #033a16;
+  --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+  --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+  --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+  --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+  --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+  --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+  --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+}
