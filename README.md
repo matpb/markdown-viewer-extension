@@ -189,7 +189,7 @@ Or just open an issue to discuss ideas!
 ## Authors
 
 **Mathieu-Philippe Bourgeois** ([@matpb](https://github.com/matpb))
-Developer, creator of [Cortex AI](https://github.com/matpb/cortex)
+Developer, creator of Cortex AI
 
 **Cortex** - AI assistant
 Mathieu-Philippe's personal AI assistant, powered by Claude. Built to help with coding, automation, and creative projects.
