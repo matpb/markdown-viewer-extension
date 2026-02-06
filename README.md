@@ -188,11 +188,11 @@ Or just open an issue to discuss ideas!
 
 ## Authors
 
-**Mat Pelletier-Bouchard** ([@matpb](https://github.com/matpb))
+**Mathieu-Philippe Bourgeois** ([@matpb](https://github.com/matpb))
 Developer, creator of [Cortex AI](https://github.com/matpb/cortex)
 
 **Cortex** - AI assistant
-Mat's personal AI assistant, powered by Claude. Built to help with coding, automation, and creative projects.
+Mathieu-Philippe's personal AI assistant, powered by Claude. Built to help with coding, automation, and creative projects.
 
 ---
 
