@@ -13,36 +13,33 @@
   let isDarkTheme = false;
   let isRawView = false;
 
-  // Configure marked with GFM options
-  marked.setOptions({
+  // Configure marked with GFM options and custom renderer
+  marked.use({
     gfm: true,
     breaks: true,
-    headerIds: true,
-    mangle: false,
     pedantic: false,
-    smartLists: true,
-    smartypants: true,
-    xhtml: false
-  });
-
-  // Custom renderer for code blocks with Prism
-  const renderer = new marked.Renderer();
-  const originalCodeRenderer = renderer.code;
-
-  renderer.code = function(code, language) {
-    if (language && Prism.languages[language]) {
-      try {
-        const highlighted = Prism.highlight(code, Prism.languages[language], language);
-        return `<pre class="language-${language}"><code class="language-${language}">${highlighted}</code></pre>`;
-      } catch (e) {
-        console.error('Prism highlighting error:', e);
+    renderer: {
+      code(code, infostring) {
+        const lang = (infostring || '').match(/\S*/)[0];
+        if (lang && Prism.languages[lang]) {
+          try {
+            const highlighted = Prism.highlight(code, Prism.languages[lang], lang);
+            return `<pre class="language-${lang}"><code class="language-${lang}">${highlighted}</code></pre>`;
+          } catch (e) {
+            console.error('Prism highlighting error:', e);
+          }
+        }
+        // Fallback to default - escape HTML
+        const escapedCode = code
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+        return `<pre><code>${escapedCode}</code></pre>`;
       }
     }
-    // Fallback to default renderer
-    return originalCodeRenderer.call(this, code, language);
-  };
-
-  marked.use({ renderer });
+  });
 
   // Listen for markdown content from content script
   window.addEventListener('message', function(event) {
