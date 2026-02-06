@@ -1,335 +1,222 @@
-# Markdown Viewer - Chrome Extension
+# Markdown Viewer 📝✨
 
-A Chrome extension that renders Markdown files (`.md` and `.markdown`) as beautifully formatted HTML with GitHub Flavored Markdown support.
+A Chrome extension that makes your markdown files look beautiful! Open any `.md` file in Chrome and watch it transform into gorgeously formatted HTML with syntax highlighting, dark mode, and more.
 
-## Features
-
-✨ **GitHub Flavored Markdown (GFM)** - Full support for tables, task lists, strikethrough, and more
-
-🎨 **Syntax Highlighting** - Code blocks with Prism.js supporting 15+ languages:
-- JavaScript, TypeScript, JSX, TSX
-- Python, Go, Rust, Java, PHP, Ruby
-- Bash, JSON, YAML, SQL, CSS, Markdown
-
-🌗 **Dark/Light Theme** - Toggle between themes with theme persistence
-
-📋 **Copy Code Blocks** - One-click copy buttons on all code blocks
-
-✅ **Task Lists** - GitHub-style checkboxes for task items
-
-📄 **Raw View** - Toggle between rendered and raw markdown
-
-🎯 **Local Files** - View local `.md` files directly in Chrome
-
-## Installation
-
-### Step 1: Download the Extension
-
-Clone or download this repository to your local machine:
-
-```bash
-git clone <repository-url>
-cd markdown-viewer-extension
-```
-
-Or download the ZIP file and extract it.
-
-### Step 2: Load Extension in Chrome
-
-1. Open Chrome and navigate to `chrome://extensions/`
-
-2. Enable **Developer mode** (toggle in the top-right corner)
-
-3. Click **Load unpacked**
-
-4. Select the `markdown-viewer-extension` folder
-
-5. The extension should now appear in your extensions list
-
-### Step 3: Enable File Access (Critical!)
-
-**This step is required for the extension to work with local files:**
-
-1. In `chrome://extensions/`, find **Markdown Viewer**
-
-2. Click **Details**
-
-3. Scroll down to **Allow access to file URLs**
-
-4. **Enable the toggle**
-
-Without this permission, the extension cannot render local markdown files.
-
-## Usage
-
-### Opening Markdown Files
-
-1. **Drag & Drop**: Drag a `.md` or `.markdown` file into Chrome
-
-2. **File Menu**: Use `File > Open File...` (Ctrl/Cmd+O) and select a markdown file
-
-3. **Address Bar**: Type `file:///path/to/your/file.md` in the address bar
-
-The extension will automatically intercept and render the file as HTML.
-
-### Toolbar Features
-
-The toolbar at the top provides quick actions:
-
-- **🌙/☀️ Button**: Toggle between dark and light themes (preference is saved)
-- **{ } Button**: Toggle raw markdown view to see the original source
-- **Filename**: Displays the current file name
-
-### Keyboard Shortcuts
-
-While viewing a markdown file:
-- Scroll normally to read content
-- Click links to navigate (external links open in new tabs)
-- Use browser zoom (Ctrl/Cmd + +/-) to adjust text size
-
-## Supported Markdown Features
-
-### Basic Formatting
-
-- **Bold**, *italic*, ~~strikethrough~~
-- Headings (H1-H6)
-- Lists (ordered and unordered)
-- Blockquotes
-- Horizontal rules
-- Links and images
-
-### Advanced Features
-
-**Tables:**
-```markdown
-| Column 1 | Column 2 |
-|----------|----------|
-| Data 1   | Data 2   |
-```
-
-**Task Lists:**
-```markdown
-- [x] Completed task
-- [ ] Incomplete task
-```
-
-**Code Blocks:**
-````markdown
-```javascript
-const greeting = "Hello, World!";
-console.log(greeting);
-```
-````
-
-**Inline Code:** Use `backticks` for inline code
-
-### Syntax Highlighting Languages
-
-The extension supports syntax highlighting for:
-
-- JavaScript (`js`, `javascript`)
-- TypeScript (`ts`, `typescript`)
-- JSX (`jsx`)
-- TSX (`tsx`)
-- Python (`py`, `python`)
-- Bash/Shell (`bash`, `sh`)
-- JSON (`json`)
-- YAML (`yaml`, `yml`)
-- CSS (`css`)
-- SQL (`sql`)
-- Go (`go`)
-- Rust (`rust`, `rs`)
-- Java (`java`)
-- PHP (`php`)
-- Ruby (`ruby`, `rb`)
-- Markdown (`markdown`, `md`)
-
-## Customization
-
-### Changing Themes
-
-The extension includes both light and dark themes that match GitHub's styling. Your theme preference is saved in browser storage and persists across sessions.
-
-### Modifying Styles
-
-To customize the appearance, edit these files:
-
-- `styles/viewer.css` - Main viewer styles and dark theme
-- `styles/github-markdown.css` - GitHub markdown base styles
-- `lib/prism.css` - Code syntax highlighting theme
-
-### Adding More Languages
-
-To add support for additional programming languages:
-
-1. Download the Prism.js component from [cdnjs](https://cdnjs.com/libraries/prism)
-2. Append it to `lib/prism.js`
-3. Reload the extension
-
-## Troubleshooting
-
-### Extension Not Working
-
-**Problem:** Markdown files still show as plain text
-
-**Solutions:**
-1. Verify "Allow access to file URLs" is enabled in `chrome://extensions/`
-2. Make sure the file has `.md` or `.markdown` extension
-3. Try reloading the extension (toggle it off and on)
-4. Check the browser console (F12) for error messages
-
-### Code Blocks Not Highlighting
-
-**Problem:** Code blocks appear without syntax colors
-
-**Solutions:**
-1. Ensure you're specifying the language in the code fence: ` ```javascript `
-2. Check that the language is in the supported list
-3. Verify `lib/prism.js` and `lib/prism.css` exist
-
-### Images Not Loading
-
-**Problem:** Images in markdown don't display
-
-**Solutions:**
-- Use absolute file paths for local images: `![alt](file:///full/path/to/image.png)`
-- Or use relative paths from the markdown file's location: `![alt](./images/photo.jpg)`
-- For web images, use full URLs: `![alt](https://example.com/image.png)`
-
-### Theme Not Persisting
-
-**Problem:** Theme resets to light mode on each load
-
-**Solution:** Ensure cookies/local storage isn't being cleared. The extension stores theme preference in `localStorage`.
-
-## Technical Details
-
-### Architecture
-
-- **Manifest Version:** 3 (latest Chrome extension standard)
-- **Content Script:** Intercepts markdown file loads at `document_start`
-- **Viewer:** Iframe-based renderer with sandboxed environment
-- **Libraries:**
-  - [marked.js](https://marked.js.org/) v11.2.0 - Markdown parsing
-  - [Prism.js](https://prismjs.com/) v1.29.0 - Syntax highlighting
-  - [GitHub Markdown CSS](https://github.com/sindresorhus/github-markdown-css) v5.5.1 - Styling
-
-### Privacy
-
-- ✅ All rendering happens **locally** in your browser
-- ✅ No data is sent to external servers
-- ✅ No analytics or tracking
-- ✅ No network requests (except for external images in your markdown)
-
-### Performance
-
-- Fast rendering for files up to 10MB
-- Lazy loading for large documents
-- Minimal memory footprint (~2-5MB)
-
-## Development
-
-### Project Structure
-
-```
-markdown-viewer-extension/
-├── manifest.json           # Extension configuration
-├── content.js             # Content script (intercepts .md files)
-├── viewer.html            # Main viewer page
-├── viewer.js              # Viewer logic and rendering
-├── icon.svg               # Extension icon (SVG source)
-├── icon16.png             # 16x16 icon
-├── icon48.png             # 48x48 icon
-├── icon128.png            # 128x128 icon
-├── styles/
-│   ├── github-markdown.css  # GitHub base styles
-│   └── viewer.css          # Custom viewer styles
-└── lib/
-    ├── marked.min.js       # Markdown parser
-    ├── marked-gfm-heading-id.min.js  # GFM heading IDs
-    ├── prism.js            # Syntax highlighter (with languages)
-    └── prism.css           # Prism theme
-```
-
-### Making Changes
-
-After modifying any files:
-
-1. Go to `chrome://extensions/`
-2. Find **Markdown Viewer**
-3. Click the **Reload** icon (circular arrow)
-4. Test your changes with a markdown file
-
-### Testing
-
-Create a test markdown file with various features:
-
-```bash
-cat > test.md << 'EOF'
-# Markdown Viewer Test
-
-## Features Test
-
-**Bold**, *italic*, ~~strikethrough~~
-
-### Code Block
-
-```javascript
-const test = "Hello, World!";
-console.log(test);
-```
-
-### Task List
-
-- [x] Install extension
-- [x] Enable file access
-- [ ] Test all features
-
-### Table
-
-| Feature | Status |
-|---------|--------|
-| Syntax highlighting | ✅ |
-| Dark theme | ✅ |
-| Task lists | ✅ |
-
-EOF
-```
-
-Then open `test.md` in Chrome and verify all features work.
-
-## Contributing
-
-Contributions are welcome! To contribute:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## License
-
-MIT License - Feel free to use and modify as needed.
-
-## Credits
-
-Built with:
-- [marked.js](https://github.com/markedjs/marked) - Markdown parser
-- [Prism.js](https://github.com/PrismJS/prism) - Syntax highlighting
-- [GitHub Markdown CSS](https://github.com/sindresorhus/github-markdown-css) - Styling
-
-## Support
-
-If you encounter issues:
-
-1. Check the Troubleshooting section above
-2. Open an issue on GitHub with:
-   - Chrome version
-   - Extension version
-   - Steps to reproduce the problem
-   - Error messages (if any)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Chrome](https://img.shields.io/badge/chrome-extension-orange)
 
 ---
 
-**Enjoy reading markdown in style! 📝✨**
+## Why This Extension?
+
+Ever opened a markdown file in your browser and been disappointed by the plain text? We felt the same way. This extension automatically detects markdown files and renders them with:
+
+✨ **Beautiful GitHub-style formatting** - Looks just like GitHub
+🎨 **Syntax highlighting** - 15+ programming languages supported
+🌗 **Dark & Light themes** - Easy on the eyes, day or night
+📋 **One-click copy** - Copy code blocks instantly
+✅ **Task lists** - Checkboxes that actually look like checkboxes
+📄 **Raw view toggle** - See the original markdown anytime
+
+---
+
+## Installation
+
+### Quick Start (3 steps)
+
+1. **Download** this repository (click the green "Code" button → Download ZIP)
+
+2. **Load in Chrome**:
+   - Open Chrome and go to `chrome://extensions/`
+   - Turn on **Developer mode** (toggle in top-right)
+   - Click **Load unpacked** and select the folder
+
+3. **Enable file access** (important!):
+   - Find **Markdown Viewer** in your extensions
+   - Click **Details**
+   - Enable **"Allow access to file URLs"**
+
+That's it! 🎉
+
+---
+
+## How to Use
+
+Just drag any `.md` file into Chrome, or use File → Open to browse for one.
+
+The extension automatically takes over and renders it beautifully.
+
+### Toolbar Features
+
+- **🌙/☀️** Toggle dark/light theme (your choice is saved)
+- **{ }** View the raw markdown source
+- **Filename** Always know which file you're viewing
+
+### Code Blocks
+
+Hover over any code block to see a **Copy** button appear. Click it to copy the code to your clipboard!
+
+---
+
+## What's Supported?
+
+### Markdown Features
+
+- **Text formatting**: **bold**, *italic*, ~~strikethrough~~
+- **Headers**: All levels (H1-H6)
+- **Lists**: Ordered, unordered, and nested
+- **Links & Images**: External and relative paths
+- **Tables**: With alignment support
+- **Task lists**: `- [x]` and `- [ ]` become real checkboxes
+- **Blockquotes**: Clean, styled quotes
+- **Horizontal rules**: Visual separators
+- **Inline & block code**: Syntax highlighted
+
+### Programming Languages
+
+Syntax highlighting works for:
+
+JavaScript • TypeScript • JSX • TSX • Python • Go • Rust • Java • PHP • Ruby • Bash • JSON • YAML • SQL • CSS • Markdown
+
+Missing your favorite language? It's easy to add more!
+
+---
+
+## Examples
+
+### Before
+```
+# My Project
+This is my **project** with some `code`...
+```
+
+### After
+![Beautiful rendered markdown with styling, colors, and formatted code blocks]
+
+---
+
+## Privacy & Security
+
+🔒 **100% Local** - All rendering happens in your browser
+🚫 **No tracking** - Zero analytics, zero data collection
+🌐 **No network requests** - Works completely offline
+✅ **Open source** - Review the code yourself
+
+Your files never leave your computer.
+
+---
+
+## Tips & Tricks
+
+### Using Relative Paths
+
+Images and links can use relative paths:
+
+```markdown
+![Logo](./assets/logo.png)
+[Read more](./docs/guide.md)
+```
+
+Just make sure the paths are correct relative to your markdown file!
+
+### Keyboard Shortcuts
+
+While viewing a file:
+- **Ctrl/Cmd + F**: Search in page
+- **Ctrl/Cmd + +/-**: Zoom in/out
+- **F5**: Reload if file changed on disk
+
+---
+
+## Customization
+
+Want to tweak the colors or add more languages? All the code is in plain JavaScript and CSS:
+
+- **Styling**: Edit `styles/viewer.css`
+- **Code highlighting**: Modify `lib/prism.js`
+- **Markdown parsing**: Configure `viewer.js`
+
+After making changes, just click the reload button in `chrome://extensions/`.
+
+---
+
+## Troubleshooting
+
+### Extension not working?
+
+**Issue**: Markdown files still show as plain text
+**Fix**: Make sure "Allow access to file URLs" is enabled (see Installation step 3)
+
+**Issue**: Code blocks have no syntax highlighting
+**Fix**: Specify the language in your markdown:
+````markdown
+```javascript
+// your code here
+```
+````
+
+**Issue**: Images don't load
+**Fix**: Use absolute paths like `file:///full/path/to/image.png` or relative paths from the markdown file
+
+### Still stuck?
+
+Open an issue on GitHub and we'll help you out!
+
+---
+
+## Contributing
+
+Found a bug? Want to add a feature? Contributions are welcome!
+
+1. Fork the repository
+2. Make your changes
+3. Test thoroughly
+4. Submit a pull request
+
+Or just open an issue to discuss ideas!
+
+---
+
+## Built With
+
+- [marked.js](https://marked.js.org/) - Fast markdown parser
+- [Prism.js](https://prismjs.com/) - Lightweight syntax highlighter
+- [GitHub Markdown CSS](https://github.com/sindresorhus/github-markdown-css) - GitHub's own markdown styling
+
+---
+
+## Authors
+
+**Mat Pelletier-Bouchard** ([@matpb](https://github.com/matpb))
+Developer, creator of [Cortex AI](https://github.com/matpb/cortex)
+
+**Cortex** - AI assistant
+Mat's personal AI assistant, powered by Claude. Built to help with coding, automation, and creative projects.
+
+---
+
+## License
+
+MIT License - Free to use, modify, and share!
+
+See [LICENSE](LICENSE) file for details.
+
+---
+
+## Changelog
+
+### v1.0.0 (2026-02-06)
+- 🎉 Initial release
+- ✨ GitHub Flavored Markdown support
+- 🎨 Syntax highlighting for 15+ languages
+- 🌗 Dark/light theme toggle
+- 📋 Copy buttons on code blocks
+- ✅ Task list rendering
+- 📄 Raw markdown view
+
+---
+
+**Made with ❤️ by humans and AI working together**
+
+If this extension makes your life easier, give it a ⭐ on GitHub!
