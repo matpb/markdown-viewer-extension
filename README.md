@@ -2,7 +2,7 @@
 
 A Chrome extension that makes your markdown files look beautiful! Open any `.md` file in Chrome and watch it transform into gorgeously formatted HTML with syntax highlighting, dark mode, and more.
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-1.1.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Chrome](https://img.shields.io/badge/chrome-extension-orange)
 
@@ -18,6 +18,7 @@ Ever opened a markdown file in your browser and been disappointed by the plain t
 📋 **One-click copy** - Copy code blocks instantly
 ✅ **Task lists** - Checkboxes that actually look like checkboxes
 📄 **Raw view toggle** - See the original markdown anytime
+🔍 **Render selected text** - Select markdown on any webpage and render it instantly
 
 ---
 
@@ -43,9 +44,19 @@ That's it! 🎉
 
 ## How to Use
 
-Just drag any `.md` file into Chrome, or use File → Open to browse for one.
+### View Markdown Files
 
-The extension automatically takes over and renders it beautifully.
+Just drag any `.md` file into Chrome, or use File → Open to browse for one. The extension automatically takes over and renders it beautifully.
+
+### Render Selected Text
+
+See some markdown on a webpage? Select it and render it instantly:
+
+1. **Highlight** any text on a webpage
+2. **Click the Markdown Viewer icon** in the toolbar, or **right-click** and choose **"Render selection as Markdown"**
+3. A new tab opens with the selected text rendered as beautiful markdown
+
+This works on any webpage — great for previewing markdown in GitHub comments, READMEs, documentation, chat messages, or anywhere else.
 
 ### Toolbar Features
 
@@ -206,7 +217,16 @@ See [LICENSE](LICENSE) file for details.
 
 ## Changelog
 
+### v1.1.0 (2026-02-08)
+
+- 🔍 Render selected text as markdown from any webpage
+- 🖱️ Right-click context menu: "Render selection as Markdown"
+- 🖼️ Clickable extension icon to render selected text
+- 🛠️ Friendly instructions when no text is selected
+- 🐛 Fixed table rendering contrast in light theme
+
 ### v1.0.0 (2026-02-06)
+
 - 🎉 Initial release
 - ✨ GitHub Flavored Markdown support
 - 🎨 Syntax highlighting for 15+ languages

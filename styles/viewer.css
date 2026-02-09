@@ -120,10 +120,21 @@ body {
 
 .markdown-body table {
   color: #24292f !important;
+  border-color: #d0d7de !important;
 }
 
 .markdown-body th {
   background-color: #f6f8fa !important;
+  border-color: #d0d7de !important;
+}
+
+.markdown-body td {
+  border-color: #d0d7de !important;
+}
+
+.markdown-body tr {
+  background-color: #ffffff !important;
+  border-color: #d0d7de !important;
 }
 
 .markdown-body tr:nth-child(2n) {
@@ -195,6 +206,29 @@ pre:hover .copy-button {
   padding: 12px;
   border-radius: 4px;
   overflow-x: auto;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: #57606a;
+}
+
+.empty-state h2 {
+  color: #24292f !important;
+  margin-bottom: 12px;
+}
+
+.empty-state ul {
+  display: inline-block;
+  text-align: left;
+  margin-top: 8px;
+}
+
+.empty-state li {
+  color: #57606a !important;
+  margin-bottom: 6px;
 }
 
 /* Dark theme */
@@ -333,4 +367,16 @@ body.dark-theme .markdown-body tr:nth-child(2n) {
 body.dark-theme .markdown-body hr {
   background-color: #30363d !important;
   border-color: #30363d !important;
+}
+
+body.dark-theme .empty-state {
+  color: #8b949e;
+}
+
+body.dark-theme .empty-state h2 {
+  color: #e6edf3 !important;
+}
+
+body.dark-theme .empty-state li {
+  color: #8b949e !important;
 }

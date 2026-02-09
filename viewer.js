@@ -41,6 +41,46 @@
     }
   });
 
+  // Check if opened as a standalone page
+  const params = new URLSearchParams(window.location.search);
+  const source = params.get('source');
+
+  if (source === 'selection') {
+    initFromStorage();
+  } else if (source === 'empty') {
+    showEmptyState();
+  }
+
+  function showEmptyState() {
+    filenameSpan.textContent = 'Markdown Viewer';
+    contentDiv.innerHTML =
+      '<div class="empty-state">' +
+        '<h2>No text selected</h2>' +
+        '<p>To render markdown, first select some text on any webpage, then:</p>' +
+        '<ul>' +
+          '<li>Click the Markdown Viewer icon in the toolbar, or</li>' +
+          '<li>Right-click and choose <strong>"Render selection as Markdown"</strong></li>' +
+        '</ul>' +
+      '</div>';
+  }
+
+  async function initFromStorage() {
+    const storage = chrome.storage.session || chrome.storage.local;
+    try {
+      const data = await storage.get('pendingMarkdown');
+      if (data.pendingMarkdown) {
+        currentMarkdown = data.pendingMarkdown;
+        filenameSpan.textContent = 'Selected Markdown';
+        renderMarkdown();
+        await storage.remove('pendingMarkdown');
+      } else {
+        showEmptyState();
+      }
+    } catch (err) {
+      console.error('Failed to read from storage:', err);
+    }
+  }
+
   // Listen for markdown content from content script
   window.addEventListener('message', function(event) {
     if (event.data.type === 'RENDER_MARKDOWN') {
