@@ -2,7 +2,7 @@
 
 A Chrome extension that makes your markdown files look beautiful! Open any `.md` file in Chrome and watch it transform into gorgeously formatted HTML with syntax highlighting, dark mode, and more.
 
-![Version](https://img.shields.io/badge/version-1.1.0-blue)
+![Version](https://img.shields.io/badge/version-1.2.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Chrome](https://img.shields.io/badge/chrome-extension-orange)
 
@@ -18,6 +18,7 @@ Ever opened a markdown file in your browser and been disappointed by the plain t
 📋 **One-click copy** - Copy code blocks instantly
 ✅ **Task lists** - Checkboxes that actually look like checkboxes
 📄 **Raw view toggle** - See the original markdown anytime
+✏️ **Paste & render** - Paste or type markdown directly and render it on the fly
 🔍 **Render selected text** - Select markdown on any webpage and render it instantly
 
 ---
@@ -58,10 +59,22 @@ See some markdown on a webpage? Select it and render it instantly:
 
 This works on any webpage — great for previewing markdown in GitHub comments, READMEs, documentation, chat messages, or anywhere else.
 
+### Paste & Render
+
+Want to quickly preview some markdown? You can paste or type it directly:
+
+1. **Click the extension icon** (no text selection needed)
+2. **Click the `{ }` button** in the top-right to open the editor
+3. **Paste or type** your markdown
+4. **Click `📄`** (or press **Ctrl/Cmd+Enter**) to render it
+
+Toggle back and forth between editing and rendered view anytime!
+
 ### Toolbar Features
 
 - **🌙/☀️** Toggle dark/light theme (your choice is saved)
-- **{ }** View the raw markdown source
+- **{ }** Open the markdown editor / view raw source
+- **📄** Render the editor content back to formatted markdown
 - **Filename** Always know which file you're viewing
 
 ### Code Blocks
@@ -216,6 +229,15 @@ See [LICENSE](LICENSE) file for details.
 ---
 
 ## Changelog
+
+### v1.2.0 (2026-02-11)
+
+- ✏️ Paste or type markdown directly in the editor and render it on the fly
+- 🔄 Toggle between editing and rendered view with the `{ }` / `📄` button
+- ⌨️ Ctrl/Cmd+Enter keyboard shortcut to render from editor
+- 📝 Updated empty state with editor instructions
+- 🚫 Helpful error page for restricted pages (chrome://, Web Store) with setup instructions
+- 📦 Added `package.sh` script for building the Chrome Web Store zip
 
 ### v1.1.0 (2026-02-08)
 

@@ -1,0 +1,128 @@
+Transform your markdown files into gorgeously formatted HTML instantly!
+
+Markdown Viewer automatically detects .md and .markdown files and renders them with beautiful GitHub-style formatting. Perfect for developers, writers, and anyone who works with markdown files.
+
+✨ KEY FEATURES
+
+• GitHub Flavored Markdown - Tables, task lists, strikethrough, and more
+• Syntax Highlighting - 15+ programming languages (JavaScript, Python, Go, Rust, TypeScript, JSX, TSX, Java, PHP, Ruby, Bash, JSON, YAML, SQL, CSS, and more)
+• Dark & Light Themes - Easy on the eyes, day or night, with automatic theme persistence
+• One-Click Copy - Copy code blocks instantly with hover buttons
+• Task Lists - GitHub-style checkboxes that actually look like checkboxes
+• Raw View - Toggle between rendered HTML and raw markdown source
+• Paste & Render - Paste or type markdown directly in the built-in editor and render it on the fly
+• Render Selected Text - Select markdown on any webpage, click the icon or right-click, and view it beautifully rendered in a new tab
+• Completely Local - All rendering happens in your browser, zero data collection
+
+🎯 PERFECT FOR
+
+• Reading documentation files locally
+• Reviewing markdown files before committing to Git
+• Previewing README files for GitHub projects
+• Reading project notes and specifications
+• Viewing markdown exports from note-taking apps
+• Quickly rendering markdown from your clipboard
+• Developers working with markdown documentation
+
+🔍 RENDER SELECTED TEXT
+
+See markdown on any webpage? Render it instantly:
+• Select any text on a webpage
+• Click the Markdown Viewer icon in the toolbar, or right-click and choose "Render selection as Markdown"
+• A new tab opens with the text beautifully rendered
+
+Works on any webpage — great for previewing markdown in GitHub comments, pull requests, documentation, chat messages, or anywhere else.
+
+✏️ PASTE & RENDER
+
+Want to quickly preview some markdown? Paste or type it directly:
+• Click the extension icon (no text selection needed)
+• Click the { } button in the top-right to open the editor
+• Paste or type your markdown
+• Click 📄 (or press Ctrl/Cmd+Enter) to render it
+
+Toggle back and forth between editing and rendered view anytime! Perfect for quickly previewing markdown from your clipboard, drafting formatted text, or experimenting with markdown syntax.
+
+🔒 PRIVACY & SECURITY
+
+• 100% local - all rendering happens in your browser
+• No tracking or analytics whatsoever
+• No network requests (except images in your markdown)
+• No data collection of any kind
+• Open source - review the code yourself on GitHub
+
+📝 MARKDOWN FEATURES
+
+Supports all standard markdown features plus GitHub Flavored Markdown extensions:
+• Headers (H1-H6) with proper hierarchy
+• Bold, italic, strikethrough text formatting
+• Lists (ordered, unordered, nested)
+• Links and images (local and remote)
+• Tables with column alignment
+• Task lists with interactive checkboxes
+• Code blocks with syntax highlighting
+• Inline code formatting
+• Blockquotes with proper styling
+• Horizontal rules
+• Line breaks and paragraphs
+
+💻 SYNTAX HIGHLIGHTING
+
+Beautiful code syntax highlighting for 15+ programming languages:
+• JavaScript, TypeScript, JSX, TSX
+• Python, Go, Rust
+• Java, PHP, Ruby
+• Bash/Shell scripting
+• JSON, YAML
+• SQL, CSS
+• Markdown itself
+
+🚀 HOW TO USE
+
+1. Install the extension
+2. Go to chrome://extensions/ and find "Markdown Viewer"
+3. Click "Details" and enable "Allow access to file URLs" (important!)
+4. Open any .md file in Chrome, or select text on any webpage and click the extension icon
+5. Watch it transform into beautiful HTML!
+
+That's it! No configuration needed.
+
+🎨 THEMES
+
+• Light Theme - Clean, readable design with dark text on white background
+• Dark Theme - Easy on the eyes with light text on dark background
+• Your theme choice is automatically saved and persists across sessions
+
+⚙️ TOOLBAR FEATURES
+
+• 🌙/☀️ Toggle - Switch between dark and light themes instantly
+• { } Button - Open the markdown editor or view raw source
+• 📄 Button - Render editor content back to formatted markdown
+• Filename Display - Always know which file you're viewing
+
+💡 TIPS & TRICKS
+
+• Use relative paths for images: ![Logo](./images/logo.png)
+• Keyboard shortcuts work: Ctrl/Cmd+F to search, Ctrl/Cmd++/- to zoom
+• Press Ctrl/Cmd+Enter in the editor to quickly render your markdown
+• Reload (F5) if you edit the markdown file on disk
+• Works great with locally cloned GitHub repositories
+• Perfect for viewing documentation while coding
+
+📦 OPEN SOURCE
+
+This extension is open source under the MIT License. Contributions welcome!
+
+GitHub: https://github.com/matpb/markdown-viewer-extension
+
+🤝 BUILT WITH
+
+• marked.js - Fast markdown parser with GFM support
+• Prism.js - Lightweight syntax highlighter
+• GitHub Markdown CSS - Official GitHub markdown styling
+
+Made with ❤️ by humans and AI working together.
+
+---
+
+**No ads. No tracking. No data collection. Just beautiful markdown rendering.**

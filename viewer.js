@@ -4,7 +4,7 @@
   'use strict';
 
   const contentDiv = document.getElementById('content');
-  const rawContentPre = document.getElementById('raw-content');
+  const editorTextarea = document.getElementById('editor');
   const filenameSpan = document.getElementById('filename');
   const toggleThemeBtn = document.getElementById('toggle-theme');
   const toggleRawBtn = document.getElementById('toggle-raw');
@@ -47,20 +47,50 @@
 
   if (source === 'selection') {
     initFromStorage();
+  } else if (source === 'restricted') {
+    showRestrictedState();
   } else if (source === 'empty') {
     showEmptyState();
+  }
+
+  function showRestrictedState() {
+    filenameSpan.textContent = 'Markdown Viewer';
+    contentDiv.innerHTML =
+      '<div class="restricted-state">' +
+        '<h2>Cannot access this page</h2>' +
+        '<p>Markdown Viewer cannot run on this type of page. This includes:</p>' +
+        '<ul>' +
+          '<li><code>chrome://</code> pages (browser settings, extensions, etc.)</li>' +
+          '<li>The Chrome Web Store</li>' +
+          '<li>Other extension pages</li>' +
+        '</ul>' +
+        '<hr>' +
+        '<h3>Viewing local markdown files?</h3>' +
+        '<p>If you\'re trying to view a local <code>.md</code> file, make sure file access is enabled:</p>' +
+        '<ol>' +
+          '<li>Go to <code>chrome://extensions/</code></li>' +
+          '<li>Find <strong>Markdown Viewer</strong> and click <strong>Details</strong></li>' +
+          '<li>Enable <strong>"Allow access to file URLs"</strong></li>' +
+        '</ol>' +
+        '<hr>' +
+        '<p>You can still <strong>paste or type markdown directly</strong>:</p>' +
+        '<p>Click the <code>{ }</code> button in the top-right to open the editor,<br>then click <code>📄</code> to render it.</p>' +
+      '</div>';
   }
 
   function showEmptyState() {
     filenameSpan.textContent = 'Markdown Viewer';
     contentDiv.innerHTML =
       '<div class="empty-state">' +
-        '<h2>No text selected</h2>' +
-        '<p>To render markdown, first select some text on any webpage, then:</p>' +
+        '<h2>Markdown Viewer</h2>' +
+        '<p>Select text on any webpage and render it as markdown:</p>' +
         '<ul>' +
           '<li>Click the Markdown Viewer icon in the toolbar, or</li>' +
           '<li>Right-click and choose <strong>"Render selection as Markdown"</strong></li>' +
         '</ul>' +
+        '<hr>' +
+        '<p>You can also <strong>paste or type markdown directly</strong>:</p>' +
+        '<p>Click the <code>{ }</code> button in the top-right to open the editor,<br>then click <code>📄</code> to render it.</p>' +
       '</div>';
   }
 
@@ -170,14 +200,24 @@
   function toggleRaw() {
     isRawView = !isRawView;
     if (isRawView) {
-      rawContentPre.textContent = currentMarkdown;
-      rawContentPre.style.display = 'block';
+      editorTextarea.value = currentMarkdown;
+      editorTextarea.style.display = 'block';
       contentDiv.style.display = 'none';
       toggleRawBtn.textContent = '📄';
+      toggleRawBtn.title = 'Render markdown';
+      editorTextarea.focus();
     } else {
-      rawContentPre.style.display = 'none';
+      currentMarkdown = editorTextarea.value;
+      editorTextarea.style.display = 'none';
       contentDiv.style.display = 'block';
       toggleRawBtn.textContent = '{ }';
+      toggleRawBtn.title = 'Edit markdown';
+
+      if (currentMarkdown.trim()) {
+        renderMarkdown();
+      } else {
+        showEmptyState();
+      }
     }
   }
 
@@ -196,4 +236,12 @@
   // Event listeners
   toggleThemeBtn.addEventListener('click', toggleTheme);
   toggleRawBtn.addEventListener('click', toggleRaw);
+
+  // Ctrl/Cmd+Enter to render from editor
+  editorTextarea.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      toggleRaw();
+    }
+  });
 })();

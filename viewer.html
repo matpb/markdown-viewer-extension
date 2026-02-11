@@ -19,13 +19,13 @@
     <span id="filename"></span>
     <div id="toolbar-actions">
       <button id="toggle-theme" title="Toggle dark/light theme">🌙</button>
-      <button id="toggle-raw" title="Toggle raw markdown">{ }</button>
+      <button id="toggle-raw" title="Edit markdown">{ }</button>
     </div>
   </div>
 
   <div id="container">
     <article id="content" class="markdown-body"></article>
-    <pre id="raw-content" style="display: none;"></pre>
+    <textarea id="editor" style="display: none;" spellcheck="false" placeholder="Paste or type your markdown here..."></textarea>
   </div>
 
   <!-- Marked.js for markdown parsing -->

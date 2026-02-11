@@ -28,7 +28,9 @@ async function renderSelectedMarkdown(tab) {
     });
   } catch (err) {
     // Cannot access restricted pages (chrome://, chrome-extension://, Web Store)
-    await showBadgeTemporarily('ERR', '#d32f2f');
+    chrome.tabs.create({
+      url: chrome.runtime.getURL('viewer.html?source=restricted')
+    });
     return;
   }
 
@@ -46,12 +48,4 @@ async function renderSelectedMarkdown(tab) {
   chrome.tabs.create({
     url: chrome.runtime.getURL('viewer.html?source=selection')
   });
-}
-
-async function showBadgeTemporarily(text, color) {
-  await chrome.action.setBadgeText({ text });
-  await chrome.action.setBadgeBackgroundColor({ color });
-  setTimeout(() => {
-    chrome.action.setBadgeText({ text: '' });
-  }, 2000);
 }
